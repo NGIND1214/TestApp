@@ -5,7 +5,7 @@ print(' ||||')
 print('*' * 10)
 price = 110
 rating = 4.5
-name = 'Deepa'
+name = 'Deepaa'
 is_published = False
 
 
