@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: ReplicationController
+metadata:
+  name: my-nginx-rc
+  labels:
+    type: backend
+spec:
+  replicas: 3
+  template: 
+    metadata: 
+      name: my-rc-nginx-pod
+      type: backed-pod
+    spec:
+      containers: 
+        - name: my-nginx-container
+          image: nginx
+          
