@@ -9,3 +9,21 @@ spec:
   containers:
     - name: nginx-container
       image: nginx
+
+
+apiVersion: v1
+kind: Pod
+metadata:
+  name: bee
+  labels:
+    app: nginx
+    type: web-server
+spec:
+  containers:
+    - name: nginx-container
+      image: nginx
+  tolerations:
+    - key: "spray"
+      operator: "equal"
+      value: "mortein"
+      effect: "NoSchedule"

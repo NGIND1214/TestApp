@@ -6,7 +6,7 @@ metadata:
     type: backend
 spec:
   replicas: 4
-  selectors: 
+  selector: 
     matchLabels:
       type: backed-nginx-pod
   template:

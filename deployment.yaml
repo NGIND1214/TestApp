@@ -7,13 +7,37 @@ metadata:
     type: backend-deployment
 spec:
   replicas: 6
-  selectors:
+  selector:
     matchLabels:  
       app: backend-pod
       type: nginx-pod
   template:
     metadata:
       name: my-dep-pod
+      labels:
+        app: backend-pod
+        type: nginx-pod
+    spec:
+      containers:
+        - name: my-nginx-container
+          image: nginx
+...
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: blue
+  labels: 
+    app: blue-deployment
+    type: backend-deployment
+spec:
+  replicas: 3
+  selector:
+    matchLabels:  
+      app: backend-pod
+      type: nginx-pod
+  template:
+    metadata:
+      name: blue
       labels:
         app: backend-pod
         type: nginx-pod

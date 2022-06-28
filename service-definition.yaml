@@ -3,12 +3,28 @@ kind: Service
 metadata:
   name: nodePort-service
   labels: 
-    type:  service
+    type: nodePort-service
 spec: 
   type: NodePort
-  ports:  
-    - targetPort: 80
-      port: 80
-      nodePort: 8080
-
-  
+  ports:  // ports is an array use "-", multiple ports mapping can be done on single service
+    - targetPort: 80 // application's port, if not specified if assumed to be same as port
+      port: 80 // service's port
+      nodePort: 8080 // ranges between 30000 to 32767, if not specified assigned random port from the this range
+  selector:
+    app: nginx
+    type: web-server
+  ...
+  apiVersion: v1
+  kind: Service
+  metadata:
+    name: clusterIP-service
+    labels: 
+      type: clusterIP-service
+  spec:
+    type: ClusterIP
+    ports: 
+      - targetPort: 80
+        port: 80
+    selector: 
+      app: nginx
+      type: web-server
